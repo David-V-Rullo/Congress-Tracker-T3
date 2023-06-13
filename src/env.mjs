@@ -32,7 +32,9 @@ export const env = createEnv({
    * isn't built with invalid env vars. To expose them to the client, prefix them with
    * `NEXT_PUBLIC_`.
    */
-  client: {
+  client: {    
+    NEXT_PUBLIC_PROPUBLICA_API_KEY: z.string()
+
     // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
   },
 
@@ -50,6 +52,7 @@ export const env = createEnv({
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    NEXT_PUBLIC_PROPUBLICA_API_KEY: process.env.NEXT_PUBLIC_PROPUBLICA_API_KEY
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
