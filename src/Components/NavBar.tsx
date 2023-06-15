@@ -4,18 +4,14 @@ import React from "react";
 const NavBar = () => {
   const user = useUser();
   return (
-    <nav className="bg-slate-400">
-      <div className="flex flex-col content-start gap-2 px-4 sm:px-6 lg:px-8">
-          <div>
-            <div className="flex-shrink-0 text-white">My App</div>
-          </div>
-          <div>
-            <div>
-              {user.isSignedIn && <SignOutButton />}
-              {!user.isSignedIn && <SignInButton />}
-            </div>
-          </div>
-        </div>
+    <nav className="bg-slate-900 sticky top-0 px-6 py-4">
+      <ul className="flex flex-col items-start gap-2 whitespace-nowrap">
+      <li className="flex items-center gap-4">Fart</li>
+      <li className="flex items-center gap-4">Fart</li>
+      {user ? (<li className="flex items-center gap-4"><SignOutButton /></li>) : (<li className="flex items-center gap-4"><SignInButton /></li>)}
+      </ul>
+      
+
     </nav>
   );
 };

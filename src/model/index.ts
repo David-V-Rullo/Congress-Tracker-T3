@@ -39,7 +39,7 @@ export interface Bill {
   }
   const apiKey = env.NEXT_PUBLIC_PROPUBLICA_API_KEY
 export interface StoreModel {
-    user: string;
+    user: string; 
     bill: Bill | null;
     fetchBills: Thunk<StoreModel, void>;
     latestBill: Bill | null;
