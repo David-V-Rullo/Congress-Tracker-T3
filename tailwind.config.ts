@@ -8,7 +8,10 @@ export default {
       fontFamily: {
         sans: ["Gotham", "sans-serif"],
       },
+      textShadow: {
+        'md': '2px 2px 4px rgba(0, 0, 0, 0.5)',
+      }
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-textshadow")],
 } satisfies Config;
