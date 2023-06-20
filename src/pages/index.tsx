@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import BillCard from "~/Components/BillCard";
 import BillFeed from "~/Components/BillFeed";
 import NavBar from "~/Components/NavBar";
 import SideBar from "~/Components/SideBar";
-import billnavlogo from "~/assets/billnavlogo.svg"; // Import the SVG image
+import billnavlogo from "~/assets/billnavlogo.svg";
+
 
 const Home: NextPage = () => {
   return (
@@ -16,10 +16,9 @@ const Home: NextPage = () => {
         <NavBar />
         </div>
         <div className="min-h-screen flex-grow w-4/8">
-          <h2 className="text-3xl underline text-start text-white font-bold mb-4 ml-6">Latest Bill</h2>
-          <div className="flex flex-col items-center justify-center">
+          <h2 className="text-2xl underline text-start text-white font-bold mb-4 ml-6">Latest Bill</h2>
+          <div className="flex flex-col items-center justify-center mx-3">
            <BillFeed />
-            {/* <BillCard /> */}
           </div>
         </div>
         <div className="w-2/8">
