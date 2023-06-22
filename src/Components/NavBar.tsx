@@ -1,7 +1,5 @@
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import React from "react";
-import billnavlogo from "~/assets/billnavlogo.svg";
-import Image from "next/image"
 
 const NavBar = () => {
   const user = useUser();

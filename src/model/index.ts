@@ -1,4 +1,5 @@
-import { action, thunk, Action, Thunk } from "easy-peasy";
+import { action, thunk } from "easy-peasy";
+import type { Action, Thunk } from "easy-peasy"; // 👈 import the types
 import axios from "axios";
 import { env } from "~/env.mjs";
 
@@ -19,7 +20,7 @@ export interface Bill {
   gpo_pdf_uri: string | null;
   congressdotgov_url: string;
   govtrack_url: string;
-  introduced_date: string;
+  introduced_date: string | null;
   active: boolean;
   last_vote: string | null;
   house_passage: string | null;
@@ -36,7 +37,7 @@ export interface Bill {
   summary_short: string;
   latest_major_action_date: string;
   latest_major_action: string;
-  [key: string]: any;
+  // [key: string]: any;
 }
 const apiKey = env.NEXT_PUBLIC_PROPUBLICA_API_KEY;
 export interface StoreModel {
@@ -47,6 +48,9 @@ export interface StoreModel {
   allBills: Bill[] | null;
   addLatestBill: Action<StoreModel, Bill>;
   addAllBills: Action<StoreModel, Bill[]>;
+}
+export interface ApiResponse {
+  results: Array<{ bills: Bill[] }>;
 }
 
 const model: StoreModel = {
@@ -60,17 +64,22 @@ const model: StoreModel = {
     state.latestBill = payload;
   }),
   user: "placeholder",
-  fetchBills: thunk(async (action) => {
+
+  fetchBills: thunk(async (actions) => {
     try {
-      const response = await axios.get(
+      const response = await axios.get<ApiResponse>(
         "https://api.propublica.org/congress/v1/bills/search.json?sort=date&dir=desc",
         {
           headers: { "X-API-Key": `${apiKey}` },
         }
       );
       const data = response.data.results;
-      action.addLatestBill(data[0].bills[0]);
-      action.addAllBills(data[0].bills);
+      if (data[0]?.bills?.[0]) {
+        actions.addLatestBill(data[0].bills[0]);
+      }
+      if (data[0]?.bills) {
+        actions.addAllBills(data[0].bills);
+      }
     } catch (error) {
       console.log(error);
     }

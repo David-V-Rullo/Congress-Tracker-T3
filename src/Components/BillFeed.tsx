@@ -4,7 +4,7 @@ import BillCard from "./BillCard";
 
 const BillFeed = () => {
   const latestBill = useStore((state) => state.latestBill);
-  const allBills = useStore((state) => state.allBills);
+  // const allBills = useStore((state) => state.allBills);
   const fetchBills = useActions((actions) => actions.fetchBills);
 
   useEffect(() => {

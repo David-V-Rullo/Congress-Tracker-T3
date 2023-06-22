@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent } from "react";
 import { Bill } from "~/model";
 interface BillCardProps {
   bill: Bill;
 }
 
-const renderButton = (status: string, label: string) => (
+const renderButton = (status: string | null, label: string) => (
   <button
     className={`px-4 py-2 text-white ${
       status ? "bg-green-500" : "bg-gray-500"
@@ -12,19 +12,22 @@ const renderButton = (status: string, label: string) => (
   >
     {label}
   </button>
+
+
+
 );
 
 const renderStatus = (
-  introduced_date: string,
-  passed_house: string,
-  passed_senate: string,
-  became_law: string
+  introduced_date: string | null,
+  house_passage: string | null,
+  senate_passage: string | null,
+  enacted: string | null
 ) => (
   <>
     {renderButton(introduced_date, "Introduced")}
-    {renderButton(passed_house, "Passed House")}
-    {renderButton(passed_senate, "Passed Senate")}
-    {renderButton(became_law, "Became Law")}
+    {renderButton(house_passage, "Passed House")}
+    {renderButton(senate_passage, "Passed Senate")}
+    {renderButton(enacted, "Became Law")}
   </>
 );
 
@@ -32,7 +35,7 @@ const BillCard: FunctionComponent<BillCardProps> = (props: BillCardProps) => {
   const { bill } = props;
   console.log(bill);
 
-  const { introduced_date, passed_house, passed_senate, became_law } = bill;
+  const { introduced_date, house_passage, senate_passage, enacted } = bill;
 
   return (
     <div className="max-w-2/4 m-3 overflow-hidden rounded bg-black p-5 shadow-xl">
@@ -83,15 +86,12 @@ const BillCard: FunctionComponent<BillCardProps> = (props: BillCardProps) => {
               </tr>
             </tbody>
           </table>
-          <div className="font-bold text-gray-200 center">This is a test</div>
+          <div className="font-bold text-gray-200">This is a test</div>
         </div>
         <h2 className="font-bold text-gray-200 underline">Status Track</h2>
         <div className="flex lg:flex-row sm:flex-col">
           {renderStatus(
-            introduced_date,
-            passed_house,
-            passed_senate,
-            became_law
+            introduced_date, house_passage, senate_passage, enacted
           )}
         </div>
       </div>

@@ -1,16 +1,15 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import Image from "next/image";
 import BillFeed from "~/Components/BillFeed";
 import NavBar from "~/Components/NavBar";
 import SideBar from "~/Components/SideBar";
-import billnavlogo from "~/assets/billnavlogo.svg";
 
 
 const Home: NextPage = () => {
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-b from-[#000080] to-black items-center">
 
-<Image width={500} height={500} src={billnavlogo} alt="Bill Navigator Logo" className="mb-6" />
+<Image width={500} height={500} src="./assets/billnavlogo.svg" alt="Bill Navigator Logo" className="mb-6" />
       <div className="container mx-auto flex items-start sm:pr-4">
         <div className="w-1/8">
         <NavBar />
