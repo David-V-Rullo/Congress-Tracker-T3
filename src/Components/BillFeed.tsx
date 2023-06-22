@@ -9,7 +9,7 @@ const BillFeed = () => {
 
   useEffect(() => {
     fetchBills();
-  }, []);
+  }, [fetchBills]);
 
   console.log(latestBill);
   return (
