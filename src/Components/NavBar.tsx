@@ -3,13 +3,14 @@ import React from "react";
 
 const NavBar = () => {
   const user = useUser();
+  console.log(user  )
   return (
-    <nav className="bg-[#000080] sticky top-0 px-6 py-4 font-gotahm text-[#FFFFFF] h-screen">
+    <nav className="bg-[#000080] sticky top-0 px-6 py-4 font-gotahm text-[#FFFFFF] w-screen">
        {/* <Image width={250} height={250} src={billnavlogo} alt="Bill Navigator Logo" /> */}
-      <ul className="flex flex-col items-start gap-2 whitespace-nowrap">
+      <ul className="flex flex-row items-start gap-2 whitespace-nowrap">
         <li className="flex items-center gap-4 text-[#FFFFFF] hover:text-[#00BFFF]">Home</li>
         <li className="flex items-center gap-4 text-[#FFFFFF] hover:text-[#00BFFF]">About</li>
-        {user ? (
+        {user.isSignedIn ? (
             <li className="flex items-center gap-4">
               <SignOutButton />
             </li>

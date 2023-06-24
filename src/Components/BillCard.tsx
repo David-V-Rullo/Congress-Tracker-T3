@@ -40,14 +40,14 @@ const BillCard: FunctionComponent<BillCardProps> = (props: BillCardProps) => {
 
   return (
     <div className="max-w-2/4 m-3 overflow-hidden rounded bg-black p-5 shadow-xl">
-      <div className="flex flex-col items-center gap-5">
-        <div className="flex lg:flex-row sm:flex-col gap-2">
-          <table className="w-2/3">
+      <div className="flex flex-col items-start gap-5 m-5">
+          
+          <table>
             <thead>
               <tr>
                 <th
                   colSpan={2}
-                  className="mb-2 text-center text-xl font-bold text-gray-200 underline"
+                  className="mb-2 text-center text-l font-bold text-gray-200 underline"
                 >
                   {bill.bill_id.toUpperCase()}
                 </th>
@@ -87,8 +87,22 @@ const BillCard: FunctionComponent<BillCardProps> = (props: BillCardProps) => {
               </tr>
             </tbody>
           </table>
-          <div className="font-bold text-gray-200">This is a test</div>
-        </div>
+          <table>
+          <tr>
+            <td className="text-gray-200 font-bold">Latest Major Action</td>
+            </tr>
+            <tr>
+            <td className="text-gray-200">{bill.latest_major_action}</td>
+          </tr>
+         </table>
+         
+          {/* <div className="lg:w-1/2">
+          <div className="flex flex-col items-center text-gray-200">
+          <div className="text-center mb-3 font-bold">Bill Summary</div>
+         
+          </div>
+          </div> */}
+          
         <h2 className="font-bold text-gray-200 underline">Status Track</h2>
         <div className="flex lg:flex-row sm:flex-col">
           {renderStatus(

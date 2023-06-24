@@ -14,9 +14,10 @@ const BillFeed = () => {
   console.log(latestBill);
   return (
     <>
-{latestBill && <BillCard bill={latestBill} />}
-    <p>No Bills</p>
-  </>)
+{latestBill ? <BillCard bill={latestBill} /> : <p>No Bills</p>}
+    
+  </>
+  )
 };
 
 export default BillFeed;
